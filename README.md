@@ -1,5 +1,7 @@
 # Чат (Slack)
 
+[ссылка на Render](https://middle-frontend-project-12-ulbr.onrender.com/)
+
 [![hexlet-check](https://github.com/xKOOOTx/middle-frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/xKOOOTx/middle-frontend-project-12/actions)
 
 Напишите real-time приложение на React, используя AJAX, REST, websockets, React (с хуками) + Zustand + TanStack Query + @mantine/form
