@@ -1,8 +1,15 @@
-import {Anchor, Button, Card, Container, Group, PasswordInput, Text, TextInput} from '@mantine/core';
+import {Anchor, Button, Card, Container, Group, Paper, PasswordInput, Text, TextInput} from '@mantine/core';
 import { useForm } from '@mantine/form';
-import { Link } from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
+import {useAuthStore} from "../store/authStore.js";
+import {login} from "../api/auth.js";
+import {useState} from "react";
 
 export const Login = () => {
+      const navigate = useNavigate();
+      const logIn = useAuthStore((state) => state.logIn);
+      const [error, setError] = useState(null);
+
       const form = useForm({
             mode: 'uncontrolled',
             initialValues: {
@@ -12,6 +19,16 @@ export const Login = () => {
 
       });
 
+      const handleSubmit = async (values) => {
+            try {
+                  const { token, username } = await login(values);
+                  logIn(token, username);
+                  navigate('/')
+            } catch (e) {
+                  setError('Неверное имя пользователя или пароль')
+            }
+      }
+
       return (
             <Container strategy={'grid'} size={400} style={{ marginTop: 120 }}>
 
@@ -19,7 +36,7 @@ export const Login = () => {
                         shadow="sm"
                         padding="xl"
                   >
-                        <form onSubmit={form.onSubmit((values) => console.log(values))}>
+                        <form onSubmit={form.onSubmit(handleSubmit)}>
                               <TextInput
                                     withAsterisk
                                     label="Ваш ник"
@@ -45,6 +62,10 @@ export const Login = () => {
                                     Регистрация
                               </Anchor>
                         </Text>
+
+                        {error && (
+                              <Text c="red">{error}</Text>
+                        )}
 
                   </Card>
             </Container>
