@@ -1,17 +1,23 @@
-import { MantineProvider } from "@mantine/core";
-import { Notifications } from "@mantine/notifications";
+import {Button, Container, Flex} from "@mantine/core";
 
-// Стили Mantine подключаются рядом с провайдером темы. В браузерном режиме
-// тесты монтируют приложение из init, поэтому импорты из index.jsx до
-// страницы не доезжают.
-import "@mantine/core/styles.css";
-import "@mantine/notifications/styles.css";
+import {useNavigate} from "react-router-dom";
 
-const App = () => (
-  <MantineProvider>
-    <Notifications position="bottom-right" />
-    <h1>Hexlet Chat</h1>
-  </MantineProvider>
-);
+const App = () => {
+      const navigate = useNavigate();
+
+      return (
+                  <Container strategy={'grid'} size={1600}>
+                        <Flex
+                              justify="space-between"
+                              align="center"
+                              direction="row"
+                              wrap="wrap"
+                        >
+                              <h1>Hexlet Chat</h1>
+                              <Button onClick={() => {navigate('/login')}}>Войти</Button>
+                        </Flex>
+                  </Container>
+      )
+}
 
 export default App;
