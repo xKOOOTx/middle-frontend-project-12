@@ -1,5 +1,7 @@
 # Чат (Slack)
 
+класс, прямо посреди проекта - "в твоей программе обновили 2 проект, он называется "Интернет-магазин комплектующих для ПК"."
+
 [ссылка на Render](https://middle-frontend-project-12-ulbr.onrender.com/)
 
 [![hexlet-check](https://github.com/xKOOOTx/middle-frontend-project-12/actions/workflows/hexlet-check.yml/badge.svg)](https://github.com/xKOOOTx/middle-frontend-project-12/actions)
